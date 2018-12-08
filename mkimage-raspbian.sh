@@ -98,6 +98,13 @@ fi
 	# make sure we're fully up-to-date
 	chroot "$rootfsDir" /bin/bash -c 'apt-get update && apt-get dist-upgrade -y'
 	
+	# remove locales and /usr/share/locale to save ~34m
+	chroot "$rootfsDir" /bin/bash -c 'apt-get remove locales'
+	rm -rf "$rootfsDir/usr/share/locale"/*
+	
+	# remove /usr/share/doc to save ~14m
+	rm -rf "$rootfsDir/usr/share/doc"/*
+
 	# delete all the apt list files since they're big and get stale quickly
 	rm -rf "$rootfsDir/var/lib/apt/lists"/*
 	# this forces "apt-get update" in dependent images, which is also good

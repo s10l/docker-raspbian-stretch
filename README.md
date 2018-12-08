@@ -1,4 +1,4 @@
-raspbian-stretch
+docker-raspbian-stretch-minified
 ===================
 
 [Raspbian](http://www.raspbian.org/) image for Docker on Raspberry Pi.
@@ -12,7 +12,7 @@ Generating
 ----------
 A chroot is created using `debootstrap` and compressed so docker can add the root filesystem during the build process. The compression requires xz-utils (or something similar) to be installed on the build machine.  
 
-[mkimage-raspbian.sh](https://github.com/schachr/docker-raspbian-stretch/blob/master/mkimage-raspbian.sh) is used to build and configure the chroot. This script **heavily** borrows docker's [mkimage.sh](https://github.com/docker/docker/blob/master/contrib/mkimage.sh) script.
+[mkimage-raspbian.sh](https://github.com/s10l/docker-raspbian-stretch-minified/blob/master/mkimage-raspbian.sh) is used to build and configure the chroot. This script **heavily** borrows docker's [mkimage.sh](https://github.com/docker/docker/blob/master/contrib/mkimage.sh) script.
 
 Building
 --------
@@ -28,14 +28,10 @@ Get some tacos.
 $ docker build -t raspbian-stretch .
 ```
 
-### Automatic Build details
-There is an `automatic build` dependency to the github repository https://github.com/schachr/docker-raspbian-stretch as well. The archive will receive updates on a regular basis to ensure that the image is up to date.
-All you need to do is to pull it (`docker pull schachr/raspbian-stretch:latest`) and recreate the container based on this image.
-
 Running
 -------
 This image does not do anything fancy, but if you want to test it out, run the following:
 
 ```bash
-$ docker run --name raspbian -it schachr/raspbian-stretch:latest /bin/bash
+$ docker run --name raspbian -it s10l/raspbian-stretch-minified:latest /bin/bash
 ```

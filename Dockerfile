@@ -1,5 +1,5 @@
 FROM scratch
-MAINTAINER schachr <schachr@github.com>
+MAINTAINER s10l <s10l@github.com>
 
 ADD raspbian.image.tar.xz /
 
